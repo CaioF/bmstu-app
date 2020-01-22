@@ -13,7 +13,7 @@ global.PDFlanguages = require('./templates_lang.js');
 global.JSONanswer = {};
 
 //mongodb//
-const uri = "mongodb+srv://user:password@cluster0-kickidlerapp-5ozqk.mongodb.net/test?retryWrites=true&w=majority";
+const uri = "mongodb://127.0.0.1:27017";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
   if (err) return console.log(err);
@@ -39,45 +39,6 @@ app.get('/send', (req, res) => {
     res.setHeader('Content-Type', 'application/pdf');
     res.send(response); // Buffer data
   });
-});
-
-app.get('/graphic-backend', (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  client.db("Cluster0-kickidlerapp").collection("test").find().toArray().then((docs) => {
-      let sellerID = 0;
-      let counterAmount = [0, 0, 0, 0];
-      let counterDiscount = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
-      docs.forEach( (item, index) =>
-      {
-        if(JSON.stringify(item.seller).replace(/"/g,"") == "Кайо")
-        {
-          sellerID = 0;
-        }
-        else if(JSON.stringify(item.seller).replace(/"/g,"") == "Александр")
-        {
-          sellerID = 1;
-        }
-        else if(JSON.stringify(item.seller).replace(/"/g,"") == "Владмир")
-        {
-          sellerID = 2;
-        }
-        else if(JSON.stringify(item.seller).replace(/"/g,"") == "Кирилл")
-        {
-          sellerID = 3;
-        }
-        else if(JSON.stringify(item.seller).replace(/"/g,"") == "Алехандро")
-        {
-          sellerID = 4;
-        }
-        counterAmount[sellerID]++;
-        counterDiscount[0][sellerID] += Number(item.discount_year);
-        counterDiscount[1][sellerID] += Number(item.discount_3years);
-        counterDiscount[2][sellerID] += Number(item.discount_lifetime);
-      });
-      res.send({express: counterAmount});
-    }).catch((err) => {
-      console.log(err);
-    });
 });
 
 app.post('/pdf-backend', (req, res) => {
