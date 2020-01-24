@@ -1,51 +1,48 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Form1 from './components/form1';
-import Form2 from './components/form2';
-import Form3 from './components/form3';
+import Form from './components/form';
+import Graphics from './components/graphic';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <ul>
+<<<<<<< HEAD
           <li><Link to="/">Дипломная Работа</Link></li>
           <li><Link to="/form-2">Курсовая Работа</Link></li>
           <li><Link to="/form-3">Реферат</Link></li>
           <li><Link to="/" onClick={() => window.location='https://github.com/CaioF/bmstu-app'}>Репозиторий</Link></li>
+=======
+          <li><Link to="/">HOME</Link></li>
+          <li><Link to="/info">GRAPHIC</Link></li>
+          <li><Link onClick={() => window.location='https://cloud.mongodb.com/v2/5d8efdc4c56c9839eee19e39?#metrics/replicaSet/5d8eff40a6f239253a58ba46/explorer/Cluster0-kickidlerapp/test/find'}>DB MANAGER</Link></li>
+>>>>>>> parent of 56b8ffe... Updating removed files
         </ul>
         <header className="App-header">
           <img src={"logo-big.png"} alt="logo" />
         </header>
-        <Route exact path="/" component={Form_1} />
-        <Route path="/form-2" component={Form_2} />
-        <Route path="/form-3" component={Form_3} />
+        <Route exact path="/" component={Home} />
+        <Route path="/info" component={Info} />
       </div>
     </Router>
   );
 }
 
-function Form_1() {
+
+function Home() {
   return (
     <div>
-      <Form1 />
+      <Form />
     </div>
   );
 }
 
-function Form_2() {
+function Info() {
   return (
     <div>
-      <Form2 />
-    </div>
-  );
-}
-
-function Form_3() {
-  return (
-    <div>
-      <Form3 />
+      <Graphics />
     </div>
   );
 }

@@ -13,11 +13,6 @@
   color: white;
 }
 
-.Hero-0 {
-  background-color: #282c34;
-  max-height: 1vh;
-}
-
 ul {
   list-style-type: none;
   margin: 0;
@@ -39,5 +34,5 @@ li a {
 }
 
 li a:hover:not(.active) {
-  background-color: rgb(24, 26, 27);
+  background-color: #4CAF50;
 }
