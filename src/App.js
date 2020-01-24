@@ -13,7 +13,7 @@ function App() {
           <li><Link to="/">Дипломная Работа</Link></li>
           <li><Link to="/form-2">Курсовая Работа</Link></li>
           <li><Link to="/form-3">Реферат</Link></li>
-          <li><Link onClick={() => window.location='https://github.com/CaioF/bmstu-app'}>Репозиторий</Link></li>
+          <li><Link to="/" onClick={() => window.location='https://github.com/CaioF/bmstu-app'}>Репозиторий</Link></li>
         </ul>
         <header className="App-header">
           <img src={"logo-big.png"} alt="logo" />
