@@ -24,7 +24,7 @@ export default class Form extends Component {
   }
 
   handleClick(event) {
-    fetch('http://192.168.0.13:8008/api/pdf-backend', { //IPv4
+    fetch('http://172.19.234.162:8008/api/from-form', { //IPv4
       body: JSON.stringify(this.state),
       cache: 'no-cache',
       credentials: 'same-origin',
@@ -38,7 +38,7 @@ export default class Form extends Component {
     })
       .then(function (response) {
         if (response.status === 200) {
-          window.location='http://192.168.0.13:8008/'; //IPv4
+          window.location='http://172.19.234.162:8008/'; //IPv4
         } else {
           alert('Ошибка сервера!\nПроверьте что все поля заполнены правильно');
           alert(`${JSON.stringify(response.body)}`);
