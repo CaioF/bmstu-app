@@ -24,7 +24,7 @@ export default class Form extends Component {
   }
 
   handleClick(event) {
-    fetch('http://172.19.234.162:8008/api/from-form', { //IPv4
+    fetch('http://192.168.1.185:8008/api/pdf', { //IPv4
       body: JSON.stringify(this.state),
       cache: 'no-cache',
       credentials: 'same-origin',
@@ -38,10 +38,10 @@ export default class Form extends Component {
     })
       .then(function (response) {
         if (response.status === 200) {
-          window.location='http://172.19.234.162:8008/'; //IPv4
+          window.setTimeout(window.location='http://192.168.1.185:8008/api/pdf',100); //IPv4
         } else {
           alert('Ошибка сервера!\nПроверьте что все поля заполнены правильно');
-          alert(`${JSON.stringify(response.body)}`);
+          console.log(`${JSON.stringify(response.body)}`);
         }
         // return response.json();
       });
@@ -57,7 +57,7 @@ export default class Form extends Component {
               Оформление титульного листа для реферата
             </span>
             <div className="wrap-input100">
-              <span className="label-input100">Название работы</span>
+              <span className="label-input100">Название реферата</span>
               <input className="input100" type="text" name="name_s" value={this.state.name_s} onChange={(event)=>this.handleInputChange(event)} placeholder="Анализ видов котов: лапы и уши" />
             </div>
             <div className="wrap-input100">
@@ -75,7 +75,7 @@ export default class Form extends Component {
             <div className="wrap-input100 rs1-wrap-input100">
             <span className="label-input100">Ваш курс</span>
               <div>
-                <select name="lang" value={this.state.value} onChange={(event)=>this.handleInputChange(event)}>
+                <select name="grade" value={this.state.grade} onChange={(event)=>this.handleInputChange(event)}>
                   <option>Выберите одно</option>
                   <option>1</option>
                   <option>2</option>
@@ -88,11 +88,11 @@ export default class Form extends Component {
             </div>
             <div className="wrap-input100">
               <span className="label-input100">Имя вашего руководителя</span>
-              <input className="input100" type="text" name="professor" value={this.state.faculty} onChange={(event)=>this.handleInputChange(event)} placeholder="Фамилия И. О." />
+              <input className="input100" type="text" name="professor" value={this.state.professor} onChange={(event)=>this.handleInputChange(event)} placeholder="Фамилия И. О." />
             </div>
             <div className="wrap-input100">
               <span className="label-input100">Кафедра вашего руководителя</span>
-              <input className="input100" type="text" name="faculty_p" value={this.state.faculty} onChange={(event)=>this.handleInputChange(event)} placeholder="ФСБ" />
+              <input className="input100" type="text" name="faculty_p" value={this.state.faculty_p} onChange={(event)=>this.handleInputChange(event)} placeholder="ФСБ" />
             </div>
             <div className="container-contact100-form-btn">
               <button type="button" className="contact100-form-btn" onClick={(event)=>this.handleClick(event)}>

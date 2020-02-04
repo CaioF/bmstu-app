@@ -4,13 +4,38 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 30vh;
+  min-height: 15vh;
+  max-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.Header-img {
+  max-height: 30vh;
+  max-width: 20vh;
+}
+
+.App-page {
+  text-align: center;
+  min-height: 100vh;
+  background-color: #282c34;
+}
+
+.Landing-page {
+  text-align: center;
+  min-height: 100vh;
+  background-color: #e6e6e6;
+}
+
+.App-iframe {
+  min-height: 100vh;
+  width: 100%;
+  display: "initial";
+  position: "relative";
 }
 
 ul {
@@ -21,8 +46,12 @@ ul {
   background-color: #282c34;
 }
 
-li {
+.li1 {
   float: left;
+}
+
+.li2 {
+  display: inline;
 }
 
 li a {
@@ -34,5 +63,5 @@ li a {
 }
 
 li a:hover:not(.active) {
-  background-color: #4CAF50;
+  background-color: #274175;
 }
