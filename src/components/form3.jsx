@@ -10,7 +10,6 @@ export default class Form extends Component {
       student: "",
       group: "",
       faculty: "",
-      grade: "",
       professor: "",
       faculty_p: ""
     };
@@ -24,7 +23,7 @@ export default class Form extends Component {
   }
 
   handleClick(event) {
-    fetch('http://192.168.1.185:8008/api/pdf', { //IPv4
+    fetch('http://172.16.90.86:8008/api/pdf', { //IPv4
       body: JSON.stringify(this.state),
       cache: 'no-cache',
       credentials: 'same-origin',
@@ -38,7 +37,7 @@ export default class Form extends Component {
     })
       .then(function (response) {
         if (response.status === 200) {
-          window.setTimeout(window.location='http://192.168.1.185:8008/api/pdf',100); //IPv4
+          window.setTimeout(window.location='http://172.16.90.86:8008/api/pdf', 60); //IPv4
         } else {
           alert('Ошибка сервера!\nПроверьте что все поля заполнены правильно');
           console.log(`${JSON.stringify(response.body)}`);
@@ -58,7 +57,7 @@ export default class Form extends Component {
             </span>
             <div className="wrap-input100">
               <span className="label-input100">Название реферата</span>
-              <input className="input100" type="text" name="name_s" value={this.state.name_s} onChange={(event)=>this.handleInputChange(event)} placeholder="Анализ видов котов: лапы и уши" />
+              <input className="input100" type="text" name="name_s" value={this.state.name_s} onChange={(event)=>this.handleInputChange(event)} placeholder="Научный анализ котов" />
             </div>
             <div className="wrap-input100">
               <span className="label-input100">Ваше имя</span>
@@ -66,25 +65,11 @@ export default class Form extends Component {
             </div>
             <div className="wrap-input100">
               <span className="label-input100">Ваша группа</span>
-              <input className="input100" type="text" name="group" value={this.state.group} onChange={(event)=>this.handleInputChange(event)} placeholder="ФСБ-11А" />
+              <input className="input100" type="text" name="group" value={this.state.group} onChange={(event)=>this.handleInputChange(event)} placeholder="CГН3-99А" />
             </div>
             <div className="wrap-input100">
-              <span className="label-input100">Ваш факультет</span>
-              <input className="input100" type="text" name="faculty" value={this.state.faculty} onChange={(event)=>this.handleInputChange(event)} placeholder="Факультет учения о котах" />
-            </div>
-            <div className="wrap-input100 rs1-wrap-input100">
-            <span className="label-input100">Ваш курс</span>
-              <div>
-                <select name="grade" value={this.state.grade} onChange={(event)=>this.handleInputChange(event)}>
-                  <option>Выберите одно</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                </select>
-              </div>
+              <span className="label-input100">Ваша кафедра</span>
+              <input className="input100" type="text" name="faculty" value={this.state.faculty} onChange={(event)=>this.handleInputChange(event)} placeholder="Информационная аналитика и политические технологий" />
             </div>
             <div className="wrap-input100">
               <span className="label-input100">Имя вашего руководителя</span>
@@ -92,7 +77,7 @@ export default class Form extends Component {
             </div>
             <div className="wrap-input100">
               <span className="label-input100">Кафедра вашего руководителя</span>
-              <input className="input100" type="text" name="faculty_p" value={this.state.faculty_p} onChange={(event)=>this.handleInputChange(event)} placeholder="ФСБ" />
+              <input className="input100" type="text" name="faculty_p" value={this.state.faculty_p} onChange={(event)=>this.handleInputChange(event)} placeholder="Информационная аналитика и политические технологий" />
             </div>
             <div className="container-contact100-form-btn">
               <button type="button" className="contact100-form-btn" onClick={(event)=>this.handleClick(event)}>

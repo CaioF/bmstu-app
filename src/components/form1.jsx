@@ -7,11 +7,10 @@ export default class Form extends Component {
     this.state = {
       type: "diplom",
       name_s: "",
-      student: "",
-      group: "",
+      student: "NULL",
+      group: "NULL",
       faculty: "",
-      grade: "",
-      professor: "",
+      professor: "NULL",
       faculty_p: ""
     };
 
@@ -24,7 +23,7 @@ export default class Form extends Component {
   }
 
   handleClick(event) {
-    fetch('http://192.168.1.185:8008/api/pdf', { //IPv4
+    fetch('http://172.16.90.86:8008/api/pdf', { //IPv4
       body: JSON.stringify(this.state),
       cache: 'no-cache',
       credentials: 'same-origin',
@@ -38,7 +37,7 @@ export default class Form extends Component {
     })
       .then(function (response) {
         if (response.status === 200) {
-          window.setTimeout(window.location='http://192.168.1.185:8008/api/pdf',100); //IPv4
+          window.setTimeout(window.location='http://172.16.90.86:8008/api/pdf', 60); //IPv4
         } else {
           alert('Ошибка сервера!\nПроверьте что все поля заполнены правильно');
           console.log(`${JSON.stringify(response.body)}`);
@@ -50,49 +49,23 @@ export default class Form extends Component {
 
   render() {
       return (
-      <div className="container-contact100">
+        <div className="container-contact100">
         <div className="wrap-contact100">
           <form name ="myForm" className="contact100-form">
             <span className="contact100-form-title">
-              Оформление титульного листа для дипломной работы
+              Оформление титульного листа для диплломной работы
             </span>
             <div className="wrap-input100">
-              <span className="label-input100">Название дипломной работы</span>
-              <input className="input100" type="text" name="name_s" value={this.state.name_s} onChange={(event)=>this.handleInputChange(event)} placeholder="Анализ видов котов: лапы и уши" />
+              <span className="label-input100">Название диплломной работы</span>
+              <input className="input100" type="text" name="name_s" value={this.state.name_s} onChange={(event)=>this.handleInputChange(event)} placeholder="Научный анализ котов" />
             </div>
             <div className="wrap-input100">
-              <span className="label-input100">Ваше имя</span>
-              <input className="input100" type="text" name="student" value={this.state.student} onChange={(event)=>this.handleInputChange(event)} placeholder="Фамилия И. О." />
-            </div>
-            <div className="wrap-input100">
-              <span className="label-input100">Ваша группа</span>
-              <input className="input100" type="text" name="group" value={this.state.group} onChange={(event)=>this.handleInputChange(event)} placeholder="ФСБ-11А" />
-            </div>
-            <div className="wrap-input100">
-              <span className="label-input100">Ваш факультет</span>
-              <input className="input100" type="text" name="faculty" value={this.state.faculty} onChange={(event)=>this.handleInputChange(event)} placeholder="Факультет учения о котах" />
-            </div>
-            <div className="wrap-input100 rs1-wrap-input100">
-            <span className="label-input100">Ваш курс</span>
-              <div>
-                <select name="grade" value={this.state.grade} onChange={(event)=>this.handleInputChange(event)}>
-                  <option>Выберите одно</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                </select>
-              </div>
-            </div>
-            <div className="wrap-input100">
-              <span className="label-input100">Имя вашего руководителя</span>
-              <input className="input100" type="text" name="professor" value={this.state.professor} onChange={(event)=>this.handleInputChange(event)} placeholder="Фамилия И. О." />
+              <span className="label-input100">Факультет вашего руководителя</span>
+              <input className="input100" type="text" name="faculty" value={this.state.faculty} onChange={(event)=>this.handleInputChange(event)} placeholder="Факультет социо-гуманитарных наук" />
             </div>
             <div className="wrap-input100">
               <span className="label-input100">Кафедра вашего руководителя</span>
-              <input className="input100" type="text" name="faculty_p" value={this.state.faculty_p} onChange={(event)=>this.handleInputChange(event)} placeholder="ФСБ" />
+              <input className="input100" type="text" name="faculty_p" value={this.state.faculty_p} onChange={(event)=>this.handleInputChange(event)} placeholder="Информационная аналитика и политические технологий" />
             </div>
             <div className="container-contact100-form-btn">
               <button type="button" className="contact100-form-btn" onClick={(event)=>this.handleClick(event)}>

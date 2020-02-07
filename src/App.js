@@ -19,9 +19,10 @@ function App() {
         <ul>
           <li className="li1"><Link to="/">Начальная страница</Link></li>
           <li className="li1"><Link to="/author">Об авторе</Link></li>
-          <li className="li1"><Link to="/">Репозиторий</Link></li>
+          <li className="li1"><Link onClick={() => window.location='https://github.com/CaioF/bmstu-app'}>Репозиторий</Link></li>
         </ul>
         <header className="App-header">
+          <br />
           <img className="Header-img" src={"logo-big.png"} alt="logo" />
           <br />
         </header>
@@ -43,7 +44,9 @@ function App() {
 function Author() {
   return (
     <div className="App-page">
-      <Iframe className="App-iframe" url="http://caiof.github.io/"/>
+      <div className="container-contact100">
+        <Iframe className="App-iframe" url="http://caiof.github.io/"/>
+      </div>
     </div>
   );
 }
