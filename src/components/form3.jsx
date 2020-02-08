@@ -18,12 +18,26 @@ export default class Form extends Component {
   }
 
   handleInputChange(event) {
-    const { target: { name, value } } = event;
-    this.setState({ [name]: value, event: event });
+    const { name, value } = event.target;
+    this.setState({ [name]: value, event });
   }
 
   handleClick(event) {
-    fetch('http://172.16.90.86:8008/api/pdf', { //IPv4
+    if (JSON.stringify(this.state.name_s).replace(/"/g,"").lenght > 150) { alert('Количество знаков названия реферата не должен превышать 150!'); }
+    else if (JSON.stringify(this.state.student).replace(/"/g,"").lenght > 50) { alert('Количество знаков имена студента не должен превышать 50!'); }
+    else if (JSON.stringify(this.state.group).replace(/"/g,"").lenght > 10) { alert('Количество знаков группы студента не должен превышать 10!'); }
+    else if (JSON.stringify(this.state.faculty).replace(/"/g,"").lenght > 75) { alert('Количество знаков названия факультета/кафедры не должен превышать 75!'); }
+    else if (JSON.stringify(this.state.professor).replace(/"/g,"").lenght > 50) { alert('Количество знаков имена руководителя не должен превышать 50!'); }
+    else if (JSON.stringify(this.state.faculty_p).replace(/"/g,"").lenght > 75) { alert('Количество знаков названия факультета/кафедры не должен превышать 75!'); }
+    else if (JSON.stringify(this.state.name_s).replace(/"/g,"") == "") { alert('Поле "Название реферата" не должно быть рустым!'); }
+    else if (JSON.stringify(this.state.student).replace(/"/g,"") == "") { alert('Поле "Ваше имя" не должно быть рустым!'); }
+    else if (JSON.stringify(this.state.group).replace(/"/g,"") == "") { alert('Поле "Ваша группа" не должно быть рустым!'); }
+    else if (JSON.stringify(this.state.faculty).replace(/"/g,"") == "") { alert('Поле "Ваша кафедра" не должно быть рустым!'); }
+    else if (JSON.stringify(this.state.professor).replace(/"/g,"") == "") { alert('Поле "Имя вашего руководителя" не должно быть рустым!'); }
+    else if (JSON.stringify(this.state.faculty_p).replace(/"/g,"") == "") { alert('Поле "Кафедра вашего руководителя" не должно быть рустым!'); }
+    else 
+    {
+      fetch('http://192.168.1.185:8008/api/pdf', { //IPv4
       body: JSON.stringify(this.state),
       cache: 'no-cache',
       credentials: 'same-origin',
@@ -37,14 +51,13 @@ export default class Form extends Component {
     })
       .then(function (response) {
         if (response.status === 200) {
-          window.setTimeout(window.location='http://172.16.90.86:8008/api/pdf', 60); //IPv4
+          window.setTimeout(window.location='http://192.168.1.185:8008/api/pdf', 60); //IPv4
         } else {
           alert('Ошибка сервера!\nПроверьте что все поля заполнены правильно');
-          console.log(`${JSON.stringify(response.body)}`);
+          console.log(`${JSON.stringify(response)}`);
         }
-        // return response.json();
       });
-
+    }
   }
 
   render() {

@@ -7,7 +7,7 @@ const app = express();
 //pdf engine requiremenets 
 const pdfMakePrinter = require('pdfmake/src/printer'); //pdf make lib for PUTting pdf files
 const DocBuilder = require('./doc_builder.js'); //custom builder for the 3 types of pdfs
-global.JSONanswer = {}; //global var to store, manipulate and pass the response to the web-app form
+global.JSONanswer = {}; //global var to store, manipulate and pass the response from the web-app form
 
 //server middleware//
 app.use(express.static(path.join(__dirname, 'build')));
