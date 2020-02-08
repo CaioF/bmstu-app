@@ -29,12 +29,12 @@ export default class Form extends Component {
     else if (JSON.stringify(this.state.faculty).replace(/"/g,"").lenght > 75) { alert('Количество знаков названия факультета/кафедры не должен превышать 75!'); }
     else if (JSON.stringify(this.state.professor).replace(/"/g,"").lenght > 50) { alert('Количество знаков имена руководителя не должен превышать 50!'); }
     else if (JSON.stringify(this.state.faculty_p).replace(/"/g,"").lenght > 75) { alert('Количество знаков названия факультета/кафедры не должен превышать 75!'); }
-    else if (JSON.stringify(this.state.name_s).replace(/"/g,"") == "") { alert('Поле "Название реферата" не должно быть рустым!'); }
-    else if (JSON.stringify(this.state.student).replace(/"/g,"") == "") { alert('Поле "Ваше имя" не должно быть рустым!'); }
-    else if (JSON.stringify(this.state.group).replace(/"/g,"") == "") { alert('Поле "Ваша группа" не должно быть рустым!'); }
-    else if (JSON.stringify(this.state.faculty).replace(/"/g,"") == "") { alert('Поле "Ваша кафедра" не должно быть рустым!'); }
-    else if (JSON.stringify(this.state.professor).replace(/"/g,"") == "") { alert('Поле "Имя вашего руководителя" не должно быть рустым!'); }
-    else if (JSON.stringify(this.state.faculty_p).replace(/"/g,"") == "") { alert('Поле "Кафедра вашего руководителя" не должно быть рустым!'); }
+    else if (JSON.stringify(this.state.name_s).replace(/"/g,"") == "") { alert('Поле "Название реферата" не должно быть пустым!'); }
+    else if (JSON.stringify(this.state.student).replace(/"/g,"") == "") { alert('Поле "Ваше имя" не должно быть пустым!'); }
+    else if (JSON.stringify(this.state.group).replace(/"/g,"") == "") { alert('Поле "Ваша группа" не должно быть пустым!'); }
+    else if (JSON.stringify(this.state.faculty).replace(/"/g,"") == "") { alert('Поле "Ваша кафедра" не должно быть пустым!'); }
+    else if (JSON.stringify(this.state.professor).replace(/"/g,"") == "") { alert('Поле "Имя вашего руководителя" не должно быть пустым!'); }
+    else if (JSON.stringify(this.state.faculty_p).replace(/"/g,"") == "") { alert('Поле "Кафедра вашего руководителя" не должно быть пустым!'); }
     else 
     {
       fetch('http://192.168.1.185:8008/api/pdf', { //IPv4

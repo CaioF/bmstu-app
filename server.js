@@ -15,20 +15,28 @@ app.use(bodyParser.json());
 
 //paths//
 app.get('/api/pdf', (req, res) => {
-  const thisBuilder = new DocBuilder(JSONanswer);
-  generatePdf(thisBuilder.buildDoc(), (response) => {
-    res.setHeader('Content-Type', 'application/pdf');
-    res.send(response); // Buffer data
-  });
-});
-
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  try
+  {
+    const thisBuilder = new DocBuilder(JSONanswer);
+    generatePdf(thisBuilder.buildDoc(), (response) => {
+      res.setHeader('Content-Type', 'application/pdf');
+      res.send(response); // Buffer data
+    });
+  }
+  catch
+  {
+    res.statusMessage = "Form needs to be filled before pdf file can be delivered!";
+    res.status(404).end();
+  }
 });
 
 app.post('/api/pdf', (req, res) => {
   JSONanswer = req.body;
   res.redirect('../api/pdf');
+});
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 //main pdf generation function

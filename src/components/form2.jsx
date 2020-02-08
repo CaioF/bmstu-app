@@ -26,9 +26,9 @@ export default class Form extends Component {
     if (JSON.stringify(this.state.name_s).replace(/"/g,"").lenght > 150) { alert('Количество знаков названия работы не должен превышать 150!'); }
     else if (JSON.stringify(this.state.faculty).replace(/"/g,"").lenght > 75) { alert('Количество знаков названия факультета/кафедры не должен превышать 75!'); }
     else if (JSON.stringify(this.state.faculty_p).replace(/"/g,"").lenght > 75) { alert('Количество знаков названия факультета/кафедры не должен превышать 75!'); }
-    else if (JSON.stringify(this.state.name_s).replace(/"/g,"") == "") { alert('Поле "Название курсовой работы" не должно быть рустым!'); }
-    else if (JSON.stringify(this.state.faculty).replace(/"/g,"") == "") { alert('Поле "Факультет вашего руководителя" не должно быть рустым!'); }
-    else if (JSON.stringify(this.state.faculty_p).replace(/"/g,"") == "") { alert('Поле "Кафедра вашего руководителя" не должно быть рустым!'); }
+    else if (JSON.stringify(this.state.name_s).replace(/"/g,"") == "") { alert('Поле "Название курсовой работы" не должно быть пустым!'); }
+    else if (JSON.stringify(this.state.faculty).replace(/"/g,"") == "") { alert('Поле "Факультет вашего руководителя" не должно быть пустым!'); }
+    else if (JSON.stringify(this.state.faculty_p).replace(/"/g,"") == "") { alert('Поле "Кафедра вашего руководителя" не должно быть пустым!'); }
     else 
     {
       fetch('http://192.168.1.185:8008/api/pdf', { //IPv4
