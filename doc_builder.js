@@ -14,6 +14,10 @@ class DocBuilder {
     if(this.type == "diplom")
     {
       var docDefinition = {
+        info: {
+          title: this.name_s,
+          author: 'Флеури Кайо'
+          },
         footer: [
           {text: "Москва "+this.date.getFullYear(), style: "header1"}
         ],
@@ -119,6 +123,10 @@ class DocBuilder {
     else if(this.type == "kursovaya")
     {
       var docDefinition = {
+        info: {
+          title: this.name_s,
+          author: 'Флеури Кайо'
+          },
         footer: [
           {text: "Москва "+this.date.getFullYear(), style: "header1"}
         ],
@@ -223,6 +231,10 @@ class DocBuilder {
     else if(this.type == "referat")
     {
       var docDefinition = {
+        info: {
+          title: this.name_s,
+          author: 'Флеури Кайо'
+          },
         footer: [
           {text: "Москва "+this.date.getFullYear(), style: "header1"}
         ],

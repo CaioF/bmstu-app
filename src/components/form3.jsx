@@ -29,15 +29,15 @@ export default class Form extends Component {
     else if (JSON.stringify(this.state.faculty).replace(/"/g,"").lenght > 75) { alert('Количество знаков названия факультета/кафедры не должен превышать 75!'); }
     else if (JSON.stringify(this.state.professor).replace(/"/g,"").lenght > 50) { alert('Количество знаков имена руководителя не должен превышать 50!'); }
     else if (JSON.stringify(this.state.faculty_p).replace(/"/g,"").lenght > 75) { alert('Количество знаков названия факультета/кафедры не должен превышать 75!'); }
-    else if (JSON.stringify(this.state.name_s).replace(/"/g,"") == "") { alert('Поле "Название реферата" не должно быть пустым!'); }
-    else if (JSON.stringify(this.state.student).replace(/"/g,"") == "") { alert('Поле "Ваше имя" не должно быть пустым!'); }
-    else if (JSON.stringify(this.state.group).replace(/"/g,"") == "") { alert('Поле "Ваша группа" не должно быть пустым!'); }
-    else if (JSON.stringify(this.state.faculty).replace(/"/g,"") == "") { alert('Поле "Ваша кафедра" не должно быть пустым!'); }
-    else if (JSON.stringify(this.state.professor).replace(/"/g,"") == "") { alert('Поле "Имя вашего руководителя" не должно быть пустым!'); }
-    else if (JSON.stringify(this.state.faculty_p).replace(/"/g,"") == "") { alert('Поле "Кафедра вашего руководителя" не должно быть пустым!'); }
+    else if (JSON.stringify(this.state.name_s).replace(/"/g,"") === "") { alert('Поле "Название реферата" не должно быть пустым!'); }
+    else if (JSON.stringify(this.state.student).replace(/"/g,"") === "") { alert('Поле "Ваше имя" не должно быть пустым!'); }
+    else if (JSON.stringify(this.state.group).replace(/"/g,"") === "") { alert('Поле "Ваша группа" не должно быть пустым!'); }
+    else if (JSON.stringify(this.state.faculty).replace(/"/g,"") === "") { alert('Поле "Ваша кафедра" не должно быть пустым!'); }
+    else if (JSON.stringify(this.state.professor).replace(/"/g,"") === "") { alert('Поле "Имя вашего руководителя" не должно быть пустым!'); }
+    else if (JSON.stringify(this.state.faculty_p).replace(/"/g,"") === "") { alert('Поле "Кафедра вашего руководителя" не должно быть пустым!'); }
     else 
     {
-      fetch('http://192.168.1.185:8008/api/pdf', { //IPv4
+      fetch('http://192.168.43.91:8008/api/pdf', { //IPv4
       body: JSON.stringify(this.state),
       cache: 'no-cache',
       credentials: 'same-origin',
@@ -51,7 +51,7 @@ export default class Form extends Component {
     })
       .then(function (response) {
         if (response.status === 200) {
-          window.setTimeout(window.location='http://192.168.1.185:8008/api/pdf', 60); //IPv4
+          window.setTimeout(window.location='http://192.168.43.91:8008/api/pdf', 60); //IPv4
         } else {
           alert('Ошибка сервера!\nПроверьте что все поля заполнены правильно');
           console.log(`${JSON.stringify(response)}`);
@@ -82,7 +82,7 @@ export default class Form extends Component {
             </div>
             <div className="wrap-input100">
               <span className="label-input100">Ваша кафедра</span>
-              <input className="input100" type="text" name="faculty" value={this.state.faculty} onChange={(event)=>this.handleInputChange(event)} placeholder="Информационная аналитика и политические технологий" />
+              <input className="input100" type="text" name="faculty" value={this.state.faculty} onChange={(event)=>this.handleInputChange(event)} placeholder="СГН3" />
             </div>
             <div className="wrap-input100">
               <span className="label-input100">Имя вашего руководителя</span>
@@ -90,7 +90,7 @@ export default class Form extends Component {
             </div>
             <div className="wrap-input100">
               <span className="label-input100">Кафедра вашего руководителя</span>
-              <input className="input100" type="text" name="faculty_p" value={this.state.faculty_p} onChange={(event)=>this.handleInputChange(event)} placeholder="Информационная аналитика и политические технологий" />
+              <input className="input100" type="text" name="faculty_p" value={this.state.faculty_p} onChange={(event)=>this.handleInputChange(event)} placeholder="ИУ5" />
             </div>
             <div className="container-contact100-form-btn">
               <button type="button" className="contact100-form-btn" onClick={(event)=>this.handleClick(event)}>
