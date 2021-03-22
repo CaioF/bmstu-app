@@ -33,7 +33,7 @@ export default class Form extends Component {
     else if (JSON.stringify(this.state.faculty_p).replace(/"/g,"") === "") { alert('Поле "Кафедра вашего руководителя" не должно быть пустым!'); }
     else 
     {
-      fetch(`${server_host}:${port}/api/pdf`, { //IPv4
+      fetch('/api/pdf', { //IPv4
       body: JSON.stringify(this.state),
       cache: 'no-cache',
       credentials: 'same-origin',
@@ -47,7 +47,7 @@ export default class Form extends Component {
     })
       .then(function (response) {
         if (response.status === 200) {
-          window.setTimeout(window.location=`${server_host}:${port}/api/pdf`, 60); //IPv4
+          window.setTimeout(window.location='/api/pdf', 60); //IPv4
         } else {
           alert('Ошибка сервера!\nПроверьте что все поля заполнены правильно');
           console.log(`${JSON.stringify(response)}`);
