@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 export default class Form extends Component {
   constructor(props) {
     this.port = process.env.PORT || 8008;
+    this.server_host = process.env.YOUR_HOST || '0.0.0.0';
     super(props);
 
     this.state = {
@@ -32,7 +33,7 @@ export default class Form extends Component {
     else if (JSON.stringify(this.state.faculty_p).replace(/"/g,"") === "") { alert('Поле "Кафедра вашего руководителя" не должно быть пустым!'); }
     else 
     {
-      fetch(`http://bmstu-pdf-app.herokuapp.com${this.port}/api/pdf`, { //IPv4
+      fetch(`${this.server_host}${this.port}/api/pdf`, { //IPv4
       body: JSON.stringify(this.state),
       cache: 'no-cache',
       credentials: 'same-origin',
@@ -46,7 +47,7 @@ export default class Form extends Component {
     })
       .then(function (response) {
         if (response.status === 200) {
-          window.setTimeout(window.location=`http://bmstu-pdf-app.herokuapp.com${this.port}/api/pdf`, 60); //IPv4
+          window.setTimeout(window.location=`${this.server_host}${this.port}/api/pdf`, 60); //IPv4
         } else {
           alert('Ошибка сервера!\nПроверьте что все поля заполнены правильно');
           console.log(`${JSON.stringify(response)}`);
