@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 
 export default class Form extends Component {
   constructor(props) {
-    this.port = process.env.PORT || 8008;
+    this.port = process.env.REACT_APP_PORT || 8008;
+    this.server_host = process.env.REACT_APP_YOUR_HOST || '0.0.0.0';
     super(props);
 
     this.state = {
