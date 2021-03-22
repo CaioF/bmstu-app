@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
+const port = process.env.REACT_APP_PORT || 8008;
+const server_host = process.env.REACT_APP_YOUR_HOST || '0.0.0.0';
 
 export default class Form extends Component {
   constructor(props) {
-    this.port = process.env.REACT_APP_PORT || 8008;
-    this.server_host = process.env.REACT_APP_YOUR_HOST || '0.0.0.0';
     super(props);
 
     this.state = {
@@ -33,7 +33,7 @@ export default class Form extends Component {
     else if (JSON.stringify(this.state.faculty_p).replace(/"/g,"") === "") { alert('Поле "Кафедра вашего руководителя" не должно быть пустым!'); }
     else 
     {
-      fetch(`${this.server_host}${this.port}/api/pdf`, { //IPv4
+      fetch(`${server_host}${port}/api/pdf`, { //IPv4
       body: JSON.stringify(this.state),
       cache: 'no-cache',
       credentials: 'same-origin',
@@ -47,7 +47,7 @@ export default class Form extends Component {
     })
       .then(function (response) {
         if (response.status === 200) {
-          window.setTimeout(window.location=`${this.server_host}${this.port}/api/pdf`, 60); //IPv4
+          window.setTimeout(window.location=`${server_host}${port}/api/pdf`, 60); //IPv4
         } else {
           alert('Ошибка сервера!\nПроверьте что все поля заполнены правильно');
           console.log(`${JSON.stringify(response)}`);
