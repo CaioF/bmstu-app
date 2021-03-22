@@ -75,7 +75,7 @@ function generatePdf(docDefinition, callback) {
   }
 };
 
-app.listen(8008, () =>
+app.listen(process.env.PORT || 8008, () =>
 {
-  console.log("> Express server is running on 'IPv4':8008\n> To have the app working at your IP:\n> 1.Edit the IPv4 at the 'form(1-3).jsx' at 'src/components/'\n> 2.Rebuild with 'npm run build'");
+  console.log("> Express server is running on 'IPv4':process.env.PORT || 8008\n> To have the app working at your IP:\n> 1.Edit the IPv4 at the 'form(1-3).jsx' at 'src/components/'\n> 2.Rebuild with 'npm run build'");
 });
